@@ -1,40 +1,39 @@
 import { Link } from 'react-router-dom';
-import { Hammer, Twitter, Linkedin, Github } from 'lucide-react';
+import { Hammer, Instagram, Linkedin, Github } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+          <div className="lg:col-span-2">
+            <div className="flex items-center space-x-2 mb-6">
               <div className="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center">
                 <Hammer className="w-5 h-5 text-white" />
               </div>
-              <span className="text-lg font-semibold text-gray-900">
+              <span className="text-xl font-bold text-gray-900 tracking-tight">
                 BUXTON SCAFFOLDING
               </span>
             </div>
-            <p className="text-sm text-gray-600 mb-4 max-w-md">
-              Modern scaffolding management platform designed to streamline
-              your construction projects and enhance team collaboration.
+            <p className="text-base text-gray-600 mb-8 max-w-sm leading-relaxed">
+              The modern workspace for construction teams to organize documents, manage projects, and collaborate.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-5">
               <a
                 href="#"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-gray-900 transition-colors"
               >
-                <Twitter className="w-5 h-5" />
+                <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-gray-900 transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-gray-900 transition-colors"
               >
                 <Github className="w-5 h-5" />
               </a>
@@ -42,14 +41,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">
+            <h3 className="text-sm font-bold text-gray-900 tracking-wider uppercase mb-6">
               Product
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               <li>
                 <Link
                   to="/"
-                  className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-base text-gray-600 hover:text-gray-900 transition-colors"
                 >
                   Features
                 </Link>
@@ -57,49 +56,105 @@ export default function Footer() {
               <li>
                 <Link
                   to="/"
-                  className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-base text-gray-600 hover:text-gray-900 transition-colors"
                 >
                   Pricing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
-                >
-                  About
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">
+            <h3 className="text-sm font-bold text-gray-900 tracking-wider uppercase mb-6">
               Company
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
+              <li>
+                <Link
+                  to="/about"
+                  className="text-base text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  About
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/contact"
-                  className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-base text-gray-600 hover:text-gray-900 transition-colors"
                 >
-                  Contact
+                  Careers
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-bold text-gray-900 tracking-wider uppercase mb-6">
+              Resources
+            </h3>
+            <ul className="space-y-4">
+              <li>
+                <Link
+                  to="/"
+                  className="text-base text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-base text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Help Center
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-bold text-gray-900 tracking-wider uppercase mb-6">
+              Legal
+            </h3>
+            <ul className="space-y-4">
+              <li>
+                <Link
+                  to="/terms"
+                  className="text-base text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Terms & Conditions
                 </Link>
               </li>
               <li>
                 <Link
                   to="/policy"
-                  className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-base text-gray-600 hover:text-gray-900 transition-colors"
                 >
                   Privacy Policy
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/policy"
-                  className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                  to="/refund"
+                  className="text-base text-gray-600 hover:text-gray-900 transition-colors"
                 >
-                  Terms of Service
+                  Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/cookies"
+                  className="text-base text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Cookie Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/security"
+                  className="text-base text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Security
                 </Link>
               </li>
             </ul>
@@ -107,6 +162,14 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-200">
+          <div className="flex flex-col items-center justify-center space-y-1 mb-4">
+            <p className="text-sm text-gray-500 text-center font-medium">
+              BUXTON SCAFFOLDING LTD – Company Number: 15873158 | Incorporated on 2 August 2024
+            </p>
+            <p className="text-sm text-gray-500 text-center">
+              27 Kinder Way, Fairfield, Buxton, England, SK17 7TP
+            </p>
+          </div>
           <p className="text-sm text-gray-500 text-center">
             &copy; {new Date().getFullYear()} BUXTON SCAFFOLDING LTD. All
             rights reserved.

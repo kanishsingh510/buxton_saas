@@ -115,11 +115,10 @@ export default function Contact() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-colors ${
-                        errors.name
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-colors ${errors.name
                           ? 'border-red-500'
                           : 'border-gray-300'
-                      }`}
+                        }`}
                       placeholder="Your name"
                     />
                     {errors.name && (
@@ -140,11 +139,10 @@ export default function Contact() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-colors ${
-                        errors.email
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-colors ${errors.email
                           ? 'border-red-500'
                           : 'border-gray-300'
-                      }`}
+                        }`}
                       placeholder="you@example.com"
                     />
                     {errors.email && (
@@ -167,11 +165,10 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={6}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-colors resize-none ${
-                        errors.message
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-colors resize-none ${errors.message
                           ? 'border-red-500'
                           : 'border-gray-300'
-                      }`}
+                        }`}
                       placeholder="Tell us about your project..."
                     />
                     {errors.message && (
@@ -217,13 +214,19 @@ export default function Contact() {
                 <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
                   <MapPin className="w-6 h-6 text-gray-900" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Address
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  Company Address
                 </h3>
                 <p className="text-gray-600">
-                  123 Construction Avenue
+                  27 Kinder Way
                   <br />
-                  London, UK EC1A 1BB
+                  Fairfield
+                  <br />
+                  Buxton
+                  <br />
+                  England
+                  <br />
+                  SK17 7TP
                 </p>
               </div>
 

@@ -3,6 +3,7 @@ interface TestimonialCardProps {
   author: string;
   role: string;
   company: string;
+  avatar: string;
 }
 
 export default function TestimonialCard({
@@ -10,9 +11,10 @@ export default function TestimonialCard({
   author,
   role,
   company,
+  avatar,
 }: TestimonialCardProps) {
   return (
-    <div className="p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+    <div className="p-8 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
       <div className="flex mb-4">
         {[...Array(5)].map((_, i) => (
           <svg
@@ -24,13 +26,13 @@ export default function TestimonialCard({
           </svg>
         ))}
       </div>
-      <p className="text-gray-700 mb-6 leading-relaxed">{quote}</p>
+      <p className="text-gray-700 mb-6 leading-relaxed italic">"{quote}"</p>
       <div className="flex items-center">
-        <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
-          <span className="text-gray-600 font-semibold text-lg">
-            {author.charAt(0)}
-          </span>
-        </div>
+        <img
+          src={avatar}
+          alt={author}
+          className="w-12 h-12 rounded-full object-cover mr-4 ring-2 ring-gray-50"
+        />
         <div>
           <p className="font-semibold text-gray-900">{author}</p>
           <p className="text-sm text-gray-600">

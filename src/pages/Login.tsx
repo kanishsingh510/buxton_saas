@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Hammer } from 'lucide-react';
+import { Hammer, Eye, EyeOff, Loader2 } from 'lucide-react';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -10,9 +10,64 @@ export default function Login() {
     remember: false,
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const [errors, setErrors] = useState({
+    email: '',
+    general: '',
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = { email: '', general: '' };
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const isFormValid = formData.email && formData.password && validateForm;
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    navigate('/dashboard');
+    if (validateForm()) {
+      setIsLoading(true);
+      setErrors((prev) => ({ ...prev, general: '' }));
+
+      try {
+        await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (formData.email !== 'test@example.com' || formData.password !== 'Password123!') {
+              reject(new Error('Incorrect login credentials'));
+            } else {
+              resolve(true);
+            }
+          }, 1500);
+        });
+        
+        navigate('/dashboard');
+      } catch (err: unknown) {
+        const errorMessage = err instanceof Error ? err.message : 'Login failed';
+        setErrors((prev) => ({ ...prev, general: errorMessage }));
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  };
+
+  const getInputStatusClass = (value: string, error: string) => {
+    if (!value) return 'border-gray-300 focus:border-gray-900 ring-gray-900';
+    if (error) return 'border-red-500 focus:border-red-500 ring-red-500';
+    return 'border-green-500 focus:border-green-500 ring-green-500';
   };
 
   return (
@@ -32,8 +87,14 @@ export default function Login() {
           </p>
         </div>
 
-        <div className="bg-white rounded-xl border border-gray-200 p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
+          {errors.general && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600 font-medium">
+              {errors.general}
+            </div>
+          )}
+          
+          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
             <div>
               <label
                 htmlFor="email"
@@ -45,13 +106,17 @@ export default function Login() {
                 type="email"
                 id="email"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-colors"
+                onChange={(e) => {
+                  setFormData({ ...formData, email: e.target.value });
+                  if (errors.email) setErrors((prev) => ({ ...prev, email: '' }));
+                }}
+                onBlur={validateForm}
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 transition-colors ${getInputStatusClass(formData.email, errors.email)}`}
                 placeholder="you@example.com"
-                required
               />
+              {errors.email && (
+                <p className="mt-1 text-xs font-medium text-red-500">{errors.email}</p>
+              )}
             </div>
 
             <div>
@@ -61,17 +126,25 @@ export default function Login() {
               >
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                value={formData.password}
-                onChange={(e) =>
-                  setFormData({ ...formData, password: e.target.value })
-                }
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-colors"
-                placeholder="Enter your password"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  value={formData.password}
+                  onChange={(e) =>
+                    setFormData({ ...formData, password: e.target.value })
+                  }
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 pr-12 transition-colors ${formData.password ? 'border-green-500 focus:border-green-500 ring-green-500' : 'border-gray-300 focus:border-gray-900 ring-gray-900'}`}
+                  placeholder="Enter your password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
+                >
+                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                </button>
+              </div>
             </div>
 
             <div className="flex items-center justify-between">
@@ -103,9 +176,13 @@ export default function Login() {
 
             <button
               type="submit"
-              className="w-full bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+              disabled={isLoading || !isFormValid}
+              className={`w-full flex items-center justify-center px-6 py-3 rounded-lg font-medium text-white transition-colors ${
+                isLoading || !isFormValid ? 'bg-gray-400 cursor-not-allowed' : 'bg-gray-900 hover:bg-gray-800'
+              }`}
             >
-              Sign in
+              {isLoading && <Loader2 className="w-5 h-5 mr-2 animate-spin" />}
+              {isLoading ? 'Signing in...' : 'Sign in'}
             </button>
           </form>
 

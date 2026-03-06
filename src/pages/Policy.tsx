@@ -164,7 +164,7 @@ export default function Policy() {
               <ul className="text-gray-600 space-y-2">
                 <li>Email: privacy@buxtonscaffolding.com</li>
                 <li>Phone: +44 20 1234 5678</li>
-                <li>Address: 123 Construction Avenue, London, UK EC1A 1BB</li>
+                <li>Address: 27 Kinder Way, Fairfield, Buxton, England, SK17 7TP</li>
               </ul>
             </div>
           </div>

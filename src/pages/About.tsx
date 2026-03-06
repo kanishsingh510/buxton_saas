@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Target, Eye, Award, Users } from 'lucide-react';
+import AboutProduct from '../components/AboutProduct';
 
 export default function About() {
   return (
@@ -29,8 +30,9 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Founded in 2020, BUXTON SCAFFOLDING LTD emerged from a simple
-                  observation: construction teams were struggling with outdated
+                  BUXTON SCAFFOLDING LTD – Company Number: 15873158<br/>
+                  Incorporated on 2 August 2024.<br/><br/>
+                  We emerged from a simple observation: construction teams were struggling with outdated
                   tools to manage complex scaffolding projects.
                 </p>
                 <p>
@@ -88,6 +90,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <AboutProduct />
 
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">

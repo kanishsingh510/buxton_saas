@@ -13,6 +13,11 @@ import Footer from '../components/Footer';
 import FeatureCard from '../components/FeatureCard';
 import TestimonialCard from '../components/TestimonialCard';
 import PricingCard from '../components/PricingCard';
+import Statistics from '../components/Statistics';
+import Workflow from '../components/Workflow';
+import ProductPreview from '../components/ProductPreview';
+import FAQ from '../components/FAQ';
+import Newsletter from '../components/Newsletter';
 
 export default function Home() {
   const features = [
@@ -61,6 +66,7 @@ export default function Home() {
       author: 'James Mitchell',
       role: 'Project Manager',
       company: 'BuildRight Construction',
+      avatar: 'https://i.pravatar.cc/150?u=james',
     },
     {
       quote:
@@ -68,6 +74,7 @@ export default function Home() {
       author: 'Sarah Thompson',
       role: 'Safety Officer',
       company: 'Apex Scaffolding',
+      avatar: 'https://i.pravatar.cc/150?u=sarah',
     },
     {
       quote:
@@ -75,6 +82,7 @@ export default function Home() {
       author: 'Michael Chen',
       role: 'Operations Director',
       company: 'Summit Projects',
+      avatar: 'https://i.pravatar.cc/150?u=michael',
     },
   ];
 
@@ -153,20 +161,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 sm:p-12">
-            <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gray-900 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-10 h-10 text-white" />
-                </div>
-                <p className="text-gray-600 font-medium">Product Preview</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Statistics />
+      
+      <Workflow />
+
+      <ProductPreview />
 
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -225,23 +224,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to get started?
-          </h2>
-          <p className="text-xl text-gray-300 mb-10">
-            Join thousands of teams managing their scaffolding projects with
-            BUXTON.
-          </p>
-          <Link
-            to="/signup"
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-gray-900 bg-white rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            Start Free Trial
-          </Link>
-        </div>
-      </section>
+      <FAQ />
+
+      <Newsletter />
 
       <Footer />
     </div>
