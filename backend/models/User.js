@@ -1,0 +1,37 @@
+const mongoose = require('mongoose');
+
+const UserSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, 'Please provide a name'],
+        trim: true,
+        match: [/^[a-zA-Z\s]+$/, 'Name should only contain letters and spaces']
+    },
+    email: {
+        type: String,
+        required: [true, 'Please provide an email'],
+        unique: true,
+        trim: true,
+        lowercase: true,
+        match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Please provide a valid email']
+    },
+    password: {
+        type: String,
+        required: [true, 'Please provide a password'],
+        minlength: 8
+    },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    verificationToken: {
+        type: String,
+        required: false
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+module.exports = mongoose.model('User', UserSchema);
